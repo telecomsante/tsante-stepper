@@ -1,0 +1,21 @@
+<link rel="import" href="../../polymer/polymer.html">
+<link rel="import" href="../tsante-stepper.html">
+<link rel="import" href="../tsante-step.html">
+
+<dom-module id="stepper-demo">
+  <template>
+    <style>
+      :host {
+        font-family: sans-serif;
+      }
+    </style>
+  
+  </template>
+
+  <script>
+    class StepperDemo extends Polymer.Element {
+      static get is() { return 'stepper-demo' }
+    }
+    customElements.define(StepperDemo.is, StepperDemo)
+    </script>
+</dom-module>
