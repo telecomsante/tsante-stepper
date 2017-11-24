@@ -1,0 +1,60 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="tsante-step">
+
+  <template>
+    <style>
+      :host {
+      }
+      div.container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+      
+      .circle {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: #ddd;
+        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        font-size: 24px;
+        
+        color: #555;
+        
+        margin-right: 15px;
+      }
+    </style>
+    
+    <div class="container">
+      <div class="circle">{{label}}</div>
+      <slot></slot>
+    </div>
+    
+  </template>
+
+  <script>
+    class TsanteStep extends Polymer.Element {
+      static get is() {
+        return 'tsante-step';
+      }
+      static get properties() {
+        return {
+          label: {
+            type: String,
+            value: ''
+          }
+        }
+      }
+      constructor() {
+        super();
+      }
+    }
+    customElements.define(TsanteStep.is, TsanteStep);
+  </script>
+
+</dom-module>

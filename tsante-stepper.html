@@ -1,0 +1,29 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="tsante-stepper">
+
+  <template>
+    <style>
+      :host {
+      }
+    </style>
+    
+    <div id="stepper">
+      <slot></slot>
+    </div>
+    
+  </template>
+
+  <script>
+    class TsanteStepper extends Polymer.Element {
+      static get is() {
+        return 'tsante-stepper';
+      }
+      constructor() {
+        super();
+      }
+    }
+    customElements.define(TsanteStepper.is, TsanteStepper);
+  </script>
+
+</dom-module>
