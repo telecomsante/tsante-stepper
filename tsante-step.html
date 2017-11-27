@@ -5,6 +5,8 @@
   <template>
     <style>
       :host {
+        display: flex;
+        flex-direction: column;
       }
       * {
         user-select: none;
@@ -35,12 +37,32 @@
         color: #555;
         
       }
+      
+      :host(:first-child) > div.connector#before, :host(:last-child) > div.connector#after {
+        display: none;
+      }
+      
+      div.connector#before {
+        margin-bottom: 5px;
+      }
+      div.connector#after {
+        margin-top: 5px;
+      }
+      
+      div.connector {
+        margin-left: 21px;
+        height:10px;
+        width: 1px;
+        background: #dbdbdb;
+      }
     </style>
     
+    <div id="before" class="connector"></div>
     <div class="container">
       <div class="circle">{{label}}</div>
       <slot></slot>
     </div>
+    <div id="after" class="connector"></div>
     
   </template>
 
