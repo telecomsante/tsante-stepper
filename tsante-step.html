@@ -38,6 +38,11 @@
         
       }
       
+      :host([selected]) .circle {
+      }
+      :host(:not([selected])) .circle {
+      }
+      
       :host(:first-child) > div.connector#before, :host(:last-child) > div.connector#after {
         display: none;
       }
