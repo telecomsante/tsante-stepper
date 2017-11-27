@@ -23,8 +23,48 @@
       static get is() {
         return 'tsante-stepper';
       }
-      constructor() {
-        super();
+      static get properties() {
+        return {
+          selectedIndex: {
+            type: Number,
+            value: -1,
+            observer: 'selectedChanged'
+          }
+        }
+      }
+      ready() {
+        super.ready()
+        console.log(this);
+        this.addEventListener('tsante-step-select', this.onStepSelected.bind(this))
+      }
+      getSteps() {
+        const nodes = this.shadowRoot.querySelector('slot').assignedNodes()
+        return nodes.filter(node => node.tagName === 'TSANTE-STEP')
+        
+      }
+      unselectAll() {
+        this.getSteps().forEach(step => step.selected = false)
+      }
+      select(index) {
+          const step = this.getSteps()[index]
+          if(step){
+            step.selected = true
+          }
+      }
+      
+      onStepSelected(evt) {
+        const step = evt.detail
+        const index = this.getSteps().indexOf(step)
+        this.selectedIndex = index
+      }
+      selectedChanged(next, previous) {
+        const max = this.getSteps().length-1
+        if(next >= 0 && next <= max){
+          this.unselectAll()
+          this.select(next)
+        } else {
+          this.selectedIndex = (next > max) ? max : 0
+        }
       }
     }
     customElements.define(TsanteStepper.is, TsanteStepper);
