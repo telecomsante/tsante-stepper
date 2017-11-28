@@ -91,12 +91,22 @@
   </template>
 
   <script>
+  /**
+   * `<tsante-step>` is a step contained in a `<tsante-stepper>`.
+   * @customElement
+   * @polymer
+   * @extends {Polymer.Element}
+   */
     class TsanteStep extends Polymer.Element {
       static get is() {
         return 'tsante-step';
       }
       static get properties() {
         return {
+          /**
+           * [label description]
+           * @type {Object}
+           */
           label: {
             type: String,
             value: ''
