@@ -71,7 +71,10 @@
     <paper-button on-click="select">
       <div id="before" class="connector"></div>
       <div class="container">
-        <div class="circle">{{label}}</div>
+        <div class="circle">
+          <template is="dom-if" if="{{done}}">✓</template>
+          <template is="dom-if" if="{{!done}}">{{label}}</template>
+        </div>
         <slot></slot>
       </div>
       <div id="after" class="connector"></div>
@@ -94,6 +97,10 @@
             type: Boolean,
             value: false,
             reflectToAttribute: true
+          },
+          done: {
+            type: Boolean,
+            value: false
           }
         }
       }

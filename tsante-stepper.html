@@ -53,6 +53,9 @@
           }
       }
       
+      setDoneBefore(index) {
+        this.getSteps().forEach((step, i) => step.done = (i < index))
+      }
       onStepClicked(evt) {
         if(this.clickable){
           const step = evt.detail
@@ -65,6 +68,7 @@
         if(next >= 0 && next <= max){
           this.unselectAll()
           this.select(next)
+          this.setDoneBefore(next)
         } else {
           this.selectedIndex = (next > max) ? max : 0
         }
