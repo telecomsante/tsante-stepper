@@ -31,8 +31,7 @@
       }
       ready() {
         super.ready()
-        console.log(this);
-        this.addEventListener('tsante-step-select', this.onStepSelected.bind(this))
+        this.addEventListener('tsante-step-click', this.onStepClicked.bind(this))
       }
       getSteps() {
         const nodes = this.shadowRoot.querySelector('slot').assignedNodes()
@@ -49,10 +48,12 @@
           }
       }
       
-      onStepSelected(evt) {
-        const step = evt.detail
-        const index = this.getSteps().indexOf(step)
-        this.selectedIndex = index
+      onStepClicked(evt) {
+        if(this.clickable){
+          const step = evt.detail
+          const index = this.getSteps().indexOf(step)
+          this.selectedIndex = index
+        }
       }
       selectedChanged(next, previous) {
         const max = this.getSteps().length-1

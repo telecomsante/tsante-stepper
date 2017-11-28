@@ -93,7 +93,7 @@
         super();
       }
       select() {
-        const selectedEvt = new CustomEvent('tsante-step-select', { detail: this, bubbles: true, composed: true })
+        const selectedEvt = new CustomEvent('tsante-step-click', { detail: this, bubbles: true, composed: true })
         this.dispatchEvent(selectedEvt)
       }
     }
