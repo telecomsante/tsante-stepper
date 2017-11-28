@@ -34,6 +34,10 @@
         font-size: 24px;
       }
       
+      :host(:hover) {
+        background: rgba(0,0,0,0.04);
+      }
+      
       :host([selected]) {
         font-weight: bold;
       }
@@ -48,7 +52,7 @@
       }
       
       :host(:first-child) > div.connector#before, :host(:last-child) > div.connector#after {
-        display: none;
+        visibility: hidden;
       }
       
       div.connector#before {
