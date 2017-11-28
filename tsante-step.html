@@ -1,23 +1,25 @@
 <link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../paper-button/paper-button.html">
 
 <dom-module id="tsante-step">
 
   <template>
     <style>
       :host {
-        display: flex;
+      }
+      paper-button {
+        width:100%;
         flex-direction: column;
+        align-items: flex-start;
+        padding: 0px 10px 0px 10px; 
+        margin: 0;
       }
-      * {
-        user-select: none;
-        -khtml-user-select: none;
-        -o-user-select: none;
-        -moz-user-select: -moz-none;
-        -webkit-user-select: none;
+      paper-button:hover {
+        background: rgba(0,0,0,0.04);
       }
-      div.container {
+      
+      .container {
         display: flex;
-        flex-direction: row;
         align-items: center;
       }
       
@@ -34,10 +36,6 @@
         font-size: 24px;
       }
       
-      :host(:hover) {
-        background: rgba(0,0,0,0.04);
-      }
-      
       :host([selected]) {
         font-weight: bold;
       }
@@ -51,7 +49,7 @@
         color: #555;
       }
       
-      :host(:first-child) > div.connector#before, :host(:last-child) > div.connector#after {
+      :host(:first-child) div.connector#before, :host(:last-child) div.connector#after {
         visibility: hidden;
       }
       
@@ -70,12 +68,14 @@
       }
     </style>
     
-    <div id="before" class="connector"></div>
-    <div class="container" on-click="select">
-      <div class="circle">{{label}}</div>
-      <slot></slot>
-    </div>
-    <div id="after" class="connector"></div>
+    <paper-button on-click="select">
+      <div id="before" class="connector"></div>
+      <div class="container">
+        <div class="circle">{{label}}</div>
+        <slot></slot>
+      </div>
+      <div id="after" class="connector"></div>
+    </paper-button>
     
   </template>
 
