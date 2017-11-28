@@ -8,8 +8,14 @@
       :host {
         font-family: sans-serif;
       }
+      button {
+        margin-bottom: 10px;
+      }
     </style>
-    <tsante-stepper clickable>
+    <button id="previous">Previous</button>
+    <button id="next">Next</button>
+    
+    <tsante-stepper id="stepper" clickable>
       <tsante-step label="1">Bonsoir</tsante-step>
       <tsante-step label="2">Hello</tsante-step>
       <tsante-step label="3">Ola</tsante-step>
@@ -22,6 +28,16 @@
   <script>
     class StepperDemo extends Polymer.Element {
       static get is() { return 'stepper-demo' }
+      
+      ready() {
+        super.ready()
+        const prevBtn = this.$.previous
+        const nextBtn = this.$.next
+        const stepper = this.$.stepper
+        
+        prevBtn.addEventListener('click', () => stepper.previous())
+        nextBtn.addEventListener('click', () => stepper.next())
+      }
     }
     customElements.define(StepperDemo.is, StepperDemo)
     </script>

@@ -69,6 +69,12 @@
           this.selectedIndex = (next > max) ? max : 0
         }
       }
+      next() {
+        this.selectedIndex++
+      }
+      previous() {
+        this.selectedIndex--
+      }
     }
     customElements.define(TsanteStepper.is, TsanteStepper);
   </script>
