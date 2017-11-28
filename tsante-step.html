@@ -36,15 +36,15 @@
         font-size: 24px;
       }
       
-      :host([selected]) {
+      :host([state="current"]) {
         font-weight: bold;
       }
       
-      :host([selected]) .circle {
+      :host([state="current"]) .circle {
         background: #555;
         color: #ddd;
       }
-      :host(:not([selected])) .circle {
+      :host(:not([state="current"])) .circle {
         background: #ddd;
         color: #555;
       }
@@ -72,8 +72,8 @@
       <div id="before" class="connector"></div>
       <div class="container">
         <div class="circle">
-          <template is="dom-if" if="{{done}}">✓</template>
-          <template is="dom-if" if="{{!done}}">{{label}}</template>
+          <template is="dom-if" if="{{equals(state, 'done')}}">✓</template>
+          <template is="dom-if" if="{{!equals(state, 'done')}}">{{label}}</template>
         </div>
         <slot></slot>
       </div>
@@ -93,19 +93,27 @@
             type: String,
             value: ''
           },
-          selected: {
-            type: Boolean,
-            value: false,
+          state: {
+            type: String,
+            value: 'following',
             reflectToAttribute: true
-          },
-          done: {
-            type: Boolean,
-            value: false
           }
         }
       }
       constructor() {
         super();
+      }
+      updateState(selfIndex, current) {
+        if(selfIndex < current) {
+          this.state = 'done'
+        } else if(selfIndex === current) {
+          this.state = 'current'
+        } else if(selfIndex > current) {
+          this.state = 'following'
+        }
+      }
+      equals(attribute, value) {
+        return attribute === value
       }
       select() {
         const evt = new CustomEvent('tsante-step-click', { detail: this, bubbles: true, composed: true })
