@@ -2,15 +2,37 @@
 <html>
   <head>
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-    <script>
-      /*
-      window.Polymer = window.Polymer || {};
-      window.Polymer.dom = 'shadow';
-      */
-    </script>
-    <link rel="import" href="stepper-demo.html">
+    <link rel="import" href="../../polymer/polymer.html">
+    <link rel="import" href="../tsante-step.html">
+    <link rel="import" href="../tsante-stepper.html">
   </head>
   <body>
-    <stepper-demo></stepper-demo>
+    <style>
+      :host {
+        font-family: sans-serif;
+      }
+      button {
+        margin-bottom: 10px;
+      }
+    </style>
+    <button id="previous">Previous</button>
+    <button id="next">Next</button>
+    
+    <tsante-stepper id="stepper" clickable>
+      <tsante-step label="1">Bonsoir</tsante-step>
+      <tsante-step label="2">Hello</tsante-step>
+      <tsante-step label="3">Ola</tsante-step>
+      <tsante-step label="4">Gutentag</tsante-step>
+      <tsante-step label="5">Moikka</tsante-step>
+    </tsante-stepper>
+    
+    <script>
+    const prevBtn = document.querySelector('button#previous')
+    const nextBtn = document.querySelector('button#next')
+    const stepper = document.querySelector('tsante-stepper')
+    
+    prevBtn.addEventListener('click', () => stepper.previous())
+    nextBtn.addEventListener('click', () => stepper.next())
+    </script>
   </body>
 </html>

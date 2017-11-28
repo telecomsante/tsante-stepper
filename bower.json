@@ -24,5 +24,8 @@
   "dependencies": {
     "polymer": "Polymer/polymer#^2.2.0",
     "paper-button": "PolymerElements/paper-button#^2.0.0"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^3.0.1"
   }
 }
