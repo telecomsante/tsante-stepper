@@ -36,15 +36,23 @@
         font-size: 24px;
       }
       
+      :host([state="done"]) {
+      }
       :host([state="current"]) {
         font-weight: bold;
       }
+      :host([state="following"]) {
+      }
       
+      :host([state="done"]) .circle {
+        background: #555;
+        color: #ddd;
+      }
       :host([state="current"]) .circle {
         background: #555;
         color: #ddd;
       }
-      :host(:not([state="current"])) .circle {
+      :host([state="following"]) .circle {
         background: #ddd;
         color: #555;
       }
