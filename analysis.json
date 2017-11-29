@@ -2,22 +2,22 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`<tsante-step>` is a step contained in a `<tsante-stepper>`.",
+      "description": "`<tsante-step>` is a step contained in a `<tsante-stepper>`.\nIt is composed of two parts:\n - The label of the step displayed in a circle. When the state of the element is set as `done`, the circle displays a checkmark instead of the label\n - The text of the step",
       "summary": "",
       "path": "tsante-step.html",
       "properties": [
         {
           "name": "label",
-          "type": "Object",
-          "description": "[label description]",
+          "type": "string",
+          "description": "The text contained in the circle of the step.\nShould be short, like 1 or 2 characters.",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 109,
+              "line": 115,
               "column": 10
             },
             "end": {
-              "line": 112,
+              "line": 118,
               "column": 11
             }
           },
@@ -28,16 +28,16 @@
         },
         {
           "name": "state",
-          "type": "string",
-          "description": "",
+          "type": "Object",
+          "description": "The state of the step.\n3 possible values : \n * `done` for the finished steps\n * `current` for the current step\n * `following` for the next steps",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 113,
+              "line": 127,
               "column": 10
             },
             "end": {
-              "line": 117,
+              "line": 131,
               "column": 11
             }
           },
@@ -50,63 +50,73 @@
       "methods": [
         {
           "name": "updateState",
-          "description": "",
+          "description": "Updates the state of the step depending on the current step of the stepper and the index of the step.",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 120,
+              "line": 140,
               "column": 6
             },
             "end": {
-              "line": 128,
+              "line": 148,
               "column": 7
             }
           },
           "metadata": {},
           "params": [
             {
-              "name": "selfIndex"
+              "name": "selfIndex",
+              "type": "number",
+              "description": "The index of the step"
             },
             {
-              "name": "current"
+              "name": "current",
+              "type": "number",
+              "description": "The current step of the stepper"
             }
           ]
         },
         {
           "name": "equals",
-          "description": "",
+          "description": "Checks if the 2 parameters have the same value",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 129,
+              "line": 155,
               "column": 6
             },
             "end": {
-              "line": 131,
+              "line": 157,
               "column": 7
             }
           },
           "metadata": {},
           "params": [
             {
-              "name": "attribute"
+              "name": "a",
+              "description": "First value"
             },
             {
-              "name": "value"
+              "name": "b",
+              "description": "Second value"
             }
-          ]
+          ],
+          "return": {
+            "type": "boolean",
+            "desc": "True is the two values are the same, false otherwise"
+          }
         },
         {
           "name": "select",
-          "description": "",
+          "description": "Dispatches a custom tsante-step-click, when the step is clicked",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 132,
+              "line": 161,
               "column": 6
             },
             "end": {
-              "line": 135,
+              "line": 164,
               "column": 7
             }
           },
@@ -115,15 +125,28 @@
         }
       ],
       "staticMethods": [],
-      "demos": [],
+      "demos": [
+        {
+          "url": "/components/tsante-stepper/demo/step-done.html",
+          "description": "Step done"
+        },
+        {
+          "url": "/components/tsante-stepper/demo/step-current.html",
+          "description": "Current step"
+        },
+        {
+          "url": "/components/tsante-stepper/demo/step-following.html",
+          "description": "Following step"
+        }
+      ],
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 99,
+          "line": 105,
           "column": 4
         },
         "end": {
-          "line": 136,
+          "line": 173,
           "column": 5
         }
       },
@@ -133,38 +156,45 @@
       "attributes": [
         {
           "name": "label",
-          "description": "[label description]",
+          "description": "The text contained in the circle of the step.\nShould be short, like 1 or 2 characters.",
           "sourceRange": {
             "start": {
-              "line": 109,
+              "line": 115,
               "column": 10
             },
             "end": {
-              "line": 112,
-              "column": 11
-            }
-          },
-          "metadata": {},
-          "type": "Object"
-        },
-        {
-          "name": "state",
-          "description": "",
-          "sourceRange": {
-            "start": {
-              "line": 113,
-              "column": 10
-            },
-            "end": {
-              "line": 117,
+              "line": 118,
               "column": 11
             }
           },
           "metadata": {},
           "type": "string"
+        },
+        {
+          "name": "state",
+          "description": "The state of the step.\n3 possible values : \n * `done` for the finished steps\n * `current` for the current step\n * `following` for the next steps",
+          "sourceRange": {
+            "start": {
+              "line": 127,
+              "column": 10
+            },
+            "end": {
+              "line": 131,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "Object"
         }
       ],
-      "events": [],
+      "events": [
+        {
+          "type": "CustomEvent",
+          "name": "tsante-step-click",
+          "description": "tsante-step-click",
+          "metadata": {}
+        }
+      ],
       "styling": {
         "cssVariables": [],
         "selectors": []

@@ -93,9 +93,15 @@
   <script>
   /**
    * `<tsante-step>` is a step contained in a `<tsante-stepper>`.
+   * It is composed of two parts:
+   *  - The label of the step displayed in a circle. When the state of the element is set as `done`, the circle displays a checkmark instead of the label
+   *  - The text of the step
    * @customElement
    * @polymer
    * @extends {Polymer.Element}
+   * @demo /components/tsante-stepper/demo/step-done.html Step done
+   * @demo /components/tsante-stepper/demo/step-current.html Current step
+   * @demo /components/tsante-stepper/demo/step-following.html Following step 
    */
     class TsanteStep extends Polymer.Element {
       static get is() {
@@ -104,13 +110,21 @@
       static get properties() {
         return {
           /**
-           * [label description]
-           * @type {Object}
+           * The text contained in the circle of the step.
+           * Should be short, like 1 or 2 characters.
            */
           label: {
             type: String,
             value: ''
           },
+          /**
+           * The state of the step.
+           * 3 possible values : 
+           *  * `done` for the finished steps
+           *  * `current` for the current step
+           *  * `following` for the next steps
+           * @type {Object}
+           */
           state: {
             type: String,
             value: 'following',
@@ -118,6 +132,12 @@
           }
         }
       }
+      
+      /**
+       * Updates the state of the step depending on the current step of the stepper and the index of the step.
+       * @param  {number} selfIndex The index of the step
+       * @param  {number} current   The current step of the stepper
+       */
       updateState(selfIndex, current) {
         if(selfIndex < current) {
           this.state = 'done'
@@ -127,13 +147,30 @@
           this.state = 'following'
         }
       }
-      equals(attribute, value) {
-        return attribute === value
+      /**
+       * Checks if the 2 parameters have the same value
+       * @param  a First value
+       * @param  b Second value
+       * @return {boolean} True is the two values are the same, false otherwise
+       */
+      equals(a, b) {
+        return a === b
       }
+      /**
+       * Dispatches a custom tsante-step-click, when the step is clicked
+       */
       select() {
         const evt = new CustomEvent('tsante-step-click', { detail: this, bubbles: true, composed: true })
         this.dispatchEvent(evt)
       }
+      
+      /**
+      * Fired when the step is clicked
+      *
+      * @event tsante-step-click
+      * @param {HTMLElement} step The clicked step
+      */
+      
     }
     customElements.define(TsanteStep.is, TsanteStep);
   </script>
