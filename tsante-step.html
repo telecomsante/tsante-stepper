@@ -6,6 +6,13 @@
   <template>
     <style>
       :host {
+        --tsante-step-connector-color-default: #DBDBDB;
+        --tsante-step-done-label-background-default: #555;
+        --tsante-step-done-label-color-default: #ddd;
+        --tsante-step-current-label-background-default: #555;
+        --tsante-step-current-label-color-default: #ddd;
+        --tsante-step-following-label-background-default: #ddd;
+        --tsante-step-following-label-color-default: #555;
       }
       paper-button {
         width:100%;
@@ -45,16 +52,16 @@
       }
       
       :host([state="done"]) .circle {
-        background: #555;
-        color: #ddd;
+        background: var(--tsante-step-done-label-background, var(--tsante-step-done-label-background-default));
+        color: var(--tsante-step-done-label-color, var(--tsante-step-done-label-color-default));
       }
       :host([state="current"]) .circle {
-        background: #555;
-        color: #ddd;
+        background: var(--tsante-step-current-label-background, var(--tsante-step-current-label-background-default));
+        color: var(--tsante-step-current-label-color, var(--tsante-step-current-label-color-default));
       }
       :host([state="following"]) .circle {
-        background: #ddd;
-        color: #555;
+        background: var(--tsante-step-following-label-background, var(--tsante-step-following-label-background-default));
+        color: var(--tsante-step-following-label-color, var(--tsante-step-following-label-color-default));
       }
       
       :host(:first-child) div.connector#before, :host(:last-child) div.connector#after {
@@ -72,7 +79,7 @@
         margin-left: 21px;
         height:10px;
         width: 1px;
-        background: #dbdbdb;
+        background: var(--tsante-step-connecter-color, var(--tsante-step-connector-color-default));
       }
     </style>
     
@@ -89,13 +96,27 @@
     </paper-button>
     
   </template>
-
+--tsante-step-done-label-background
   <script>
   /**
    * `<tsante-step>` is a step contained in a `<tsante-stepper>`.
    * It is composed of two parts:
-   *  - The label of the step displayed in a circle. When the state of the element is set as `done`, the circle displays a checkmark instead of the label
-   *  - The text of the step
+   *  * The label of the step displayed in a circle. When the state of the element is set as `done`, the circle displays a checkmark instead of the label
+   *  * The text of the step
+   *
+   * ### Styling
+   * The `<tsante-step>` element provides the following custom properties and mixins for styling:
+   * 
+   * Custom property                          | Description                                             | Default
+   * -----------------------------------------|---------------------------------------------------------|--------
+   * --tsante-stop-connector-color            | The color of the connector between two steps            | #DBDBDB
+   * --tsante-step-done-label-background      | The background color of the label of a `done` step      | #555
+   * --tsante-step-done-label-color           | The color of the label of a `done` step                 | #DDD
+   * --tsante-step-current-label-background   | The background color of the label of the `current` step | #555
+   * --tsante-step-current-label-color        | The color of the label of the `current` step            | #DDD
+   * --tsante-step-following-label-background | The background color of the label of a `following` step | #DDD
+   * --tsante-step-following-label-color      | The color of the label of a `following` step            | #555
+   * 
    * @customElement
    * @polymer
    * @extends {Polymer.Element}
