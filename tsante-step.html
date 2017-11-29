@@ -44,11 +44,14 @@
       }
       
       :host([state="done"]) {
+        @apply --tsante-step-done-content-style;
       }
       :host([state="current"]) {
         font-weight: bold;
+        @apply --tsante-step-current-content-style;
       }
       :host([state="following"]) {
+        @apply --tsante-step-following-content-style;
       }
       
       :host([state="done"]) .circle {
@@ -79,7 +82,7 @@
         margin-left: 21px;
         height:10px;
         width: 1px;
-        background: var(--tsante-step-connecter-color, var(--tsante-step-connector-color-default));
+        background: var(--tsante-step-connector-color, var(--tsante-step-connector-color-default));
       }
     </style>
     

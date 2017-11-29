@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 137,
+              "line": 140,
               "column": 10
             },
             "end": {
-              "line": 140,
+              "line": 143,
               "column": 11
             }
           },
@@ -33,11 +33,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 149,
+              "line": 152,
               "column": 10
             },
             "end": {
-              "line": 153,
+              "line": 156,
               "column": 11
             }
           },
@@ -54,11 +54,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 162,
+              "line": 165,
               "column": 6
             },
             "end": {
-              "line": 170,
+              "line": 173,
               "column": 7
             }
           },
@@ -82,11 +82,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 177,
+              "line": 180,
               "column": 6
             },
             "end": {
-              "line": 179,
+              "line": 182,
               "column": 7
             }
           },
@@ -112,11 +112,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 183,
+              "line": 186,
               "column": 6
             },
             "end": {
-              "line": 186,
+              "line": 189,
               "column": 7
             }
           },
@@ -146,11 +146,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 127,
+          "line": 130,
           "column": 4
         },
         "end": {
-          "line": 195,
+          "line": 198,
           "column": 5
         }
       },
@@ -163,11 +163,11 @@
           "description": "The text contained in the circle of the step.\nShould be short, like 1 or 2 characters.",
           "sourceRange": {
             "start": {
-              "line": 137,
+              "line": 140,
               "column": 10
             },
             "end": {
-              "line": 140,
+              "line": 143,
               "column": 11
             }
           },
@@ -179,11 +179,11 @@
           "description": "The state of the step.\n3 possible values : \n * `done` for the finished steps\n * `current` for the current step\n * `following` for the next steps",
           "sourceRange": {
             "start": {
-              "line": 149,
+              "line": 152,
               "column": 10
             },
             "end": {
-              "line": 153,
+              "line": 156,
               "column": 11
             }
           },
@@ -210,11 +210,11 @@
           "range": {
             "file": "tsante-step.html",
             "start": {
-              "line": 92,
+              "line": 95,
               "column": 8
             },
             "end": {
-              "line": 92,
+              "line": 95,
               "column": 21
             }
           }
