@@ -29,11 +29,21 @@
       }
       static get properties() {
         return {
+          /**
+           * The currently selected step
+           * @type {number}
+           */
           selectedIndex: {
             type: Number,
             value: -1,
-            observer: 'selectedChanged'
+            observer: '_selectedChanged'
           },
+          /**
+           * Defines if the steps are clickable or not.
+           * If `clickable` is set to `true`, the selection of a step can be done by clicking it
+           * If `clickable` is set to `false`, only the functions `next` and `previous` or the modification of `selectedIndex` will be able to change the selected step
+           * @type {Object}
+           */
           clickable: {
             type: Boolean,
             value: false,
@@ -43,24 +53,44 @@
       }
       ready() {
         super.ready()
-        this.addEventListener('tsante-step-click', this.onStepClicked.bind(this))
+        this.addEventListener('tsante-step-click', this._onStepClicked.bind(this))
       }
+      /**
+       * Gets the slotted `tsante-step` elements
+       * @return {Array<HTMLElements>} The array of tsante-step elements
+       */
       getSteps() {
         const nodes = this.shadowRoot.querySelector('slot').assignedNodes()
         return nodes.filter(node => node.tagName === 'TSANTE-STEP')
         
       }
+      /**
+       * Updates the state of the steps
+       * @param {number} current The currently selected index
+       */
       setStates(current) {
         this.getSteps().forEach((step, index) => step.updateState(index, current))
       }
-      onStepClicked(evt) {
+      /**
+       * If the clickable attribute is set to true, the function sets the new selectedIndex
+       * @param  {CustomEvent} evt The custom event
+       */
+      _onStepClicked(evt) {
         if(this.clickable){
           const step = evt.detail
           const index = this.getSteps().indexOf(step)
           this.selectedIndex = index
         }
       }
-      selectedChanged(next, previous) {
+      /**
+       * Checks that the next value of selectedIndex is correct.
+       * It has to be more than 0, and less than the number of steps.
+       * It it is correct, the states of the steps are updated.
+       * It it is not correct, the value is reset to 0.
+       * @param  {number} next     The next value of selectedIndex
+       * @param  {number} previous The previous value of selectedIndex
+       */
+      _selectedChanged(next, previous) {
         const max = this.getSteps().length-1
         if(next >= 0 && next <= max){
           this.setStates(next)
@@ -68,9 +98,15 @@
           this.selectedIndex = (next > max) ? max : 0
         }
       }
+      /**
+       * Increases the selectedIndex
+       */
       next() {
         this.selectedIndex++
       }
+      /**
+      * Decreases the selectedIndex
+      */
       previous() {
         this.selectedIndex--
       }
