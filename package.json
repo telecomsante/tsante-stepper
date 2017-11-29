@@ -1,0 +1,30 @@
+{
+  "name": "tsante-stepper",
+  "version": "1.0.0",
+  "description": "A simple vertical stepper without inner layout",
+  "main": "index.js",
+  "scripts": {
+    "install": "bower install",
+    "start": "polymer serve --hostname 0.0.0.0 --port 8080",
+    "dev": "polymer serve --hostname 0.0.0.0 --port 8080 --open",
+    "clean": "git -c core.excludesfile=/dev/null clean -X -d -f"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.telecomsante.com:components/tsante-stepper.git"
+  },
+  "keywords": [
+    "polymer",
+    "stepper",
+    "step",
+    "component",
+    "web",
+    "polymer2"
+  ],
+  "author": "bgoubin",
+  "license": "ISC",
+  "dependencies": {
+    "bower": "^1.8.2",
+    "polymer-cli": "^1.5.7"
+  }
+}
