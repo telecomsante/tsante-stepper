@@ -1,0 +1,31 @@
+{
+  "name": "tsante-stepper",
+  "description": "A simple vertical stepper without inner layout",
+  "authors": [
+    "bgoubin"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "polymer",
+    "stepper",
+    "step",
+    "component",
+    "web",
+    "polymer2"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^2.2.0",
+    "paper-button": "PolymerElements/paper-button#^2.0.0"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^3.0.1"
+  }
+}

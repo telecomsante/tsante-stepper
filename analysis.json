@@ -1,0 +1,505 @@
+{
+  "schema_version": "1.0.0",
+  "elements": [
+    {
+      "description": "`<tsante-step>` is a step contained in a `<tsante-stepper>`.\nIt is composed of two parts:\n * The label of the step displayed in a circle. When the state of the element is set as `done`, the circle displays a checkmark instead of the label\n * The text of the step\n\n### Styling\nThe `<tsante-step>` element provides the following custom properties and mixins for styling:\n\nCustom property                          | Description                                             | Default\n-----------------------------------------|---------------------------------------------------------|--------\n--tsante-stop-connector-color            | The color of the connector between two steps            | #DBDBDB\n--tsante-step-done-label-background      | The background color of the label of a `done` step      | #555\n--tsante-step-done-label-color           | The color of the label of a `done` step                 | #DDD\n--tsante-step-current-label-background   | The background color of the label of the `current` step | #555\n--tsante-step-current-label-color        | The color of the label of the `current` step            | #DDD\n--tsante-step-following-label-background | The background color of the label of a `following` step | #DDD\n--tsante-step-following-label-color      | The color of the label of a `following` step            | #555",
+      "summary": "",
+      "path": "tsante-step.html",
+      "properties": [
+        {
+          "name": "label",
+          "type": "string",
+          "description": "The text contained in the circle of the step.\nShould be short, like 1 or 2 characters.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 140,
+              "column": 10
+            },
+            "end": {
+              "line": 143,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"\""
+        },
+        {
+          "name": "state",
+          "type": "Object",
+          "description": "The state of the step.\n3 possible values : \n * `done` for the finished steps\n * `current` for the current step\n * `following` for the next steps",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 152,
+              "column": 10
+            },
+            "end": {
+              "line": 156,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"following\""
+        }
+      ],
+      "methods": [
+        {
+          "name": "updateState",
+          "description": "Updates the state of the step depending on the current step of the stepper and the index of the step.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 165,
+              "column": 6
+            },
+            "end": {
+              "line": 173,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "selfIndex",
+              "type": "number",
+              "description": "The index of the step"
+            },
+            {
+              "name": "current",
+              "type": "number",
+              "description": "The current step of the stepper"
+            }
+          ]
+        },
+        {
+          "name": "equals",
+          "description": "Checks if the 2 parameters have the same value",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 180,
+              "column": 6
+            },
+            "end": {
+              "line": 182,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "a",
+              "description": "First value"
+            },
+            {
+              "name": "b",
+              "description": "Second value"
+            }
+          ],
+          "return": {
+            "type": "boolean",
+            "desc": "True is the two values are the same, false otherwise"
+          }
+        },
+        {
+          "name": "select",
+          "description": "Dispatches a custom tsante-step-click, when the step is clicked",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 186,
+              "column": 6
+            },
+            "end": {
+              "line": 189,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": []
+        }
+      ],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "/components/tsante-stepper/demo/step-done.html",
+          "description": "Step done"
+        },
+        {
+          "url": "/components/tsante-stepper/demo/step-current.html",
+          "description": "Current step"
+        },
+        {
+          "url": "/components/tsante-stepper/demo/step-following.html",
+          "description": "Following step"
+        },
+        {
+          "url": "/components/tsante-stepper/demo/stepper-custom-mixins.html",
+          "description": "custom mixins stepper"
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 130,
+          "column": 4
+        },
+        "end": {
+          "line": 198,
+          "column": 5
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "TsanteStep",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "The text contained in the circle of the step.\nShould be short, like 1 or 2 characters.",
+          "sourceRange": {
+            "start": {
+              "line": 140,
+              "column": 10
+            },
+            "end": {
+              "line": 143,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "state",
+          "description": "The state of the step.\n3 possible values : \n * `done` for the finished steps\n * `current` for the current step\n * `following` for the next steps",
+          "sourceRange": {
+            "start": {
+              "line": 152,
+              "column": 10
+            },
+            "end": {
+              "line": 156,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "Object"
+        }
+      ],
+      "events": [
+        {
+          "type": "CustomEvent",
+          "name": "tsante-step-click",
+          "description": "tsante-step-click",
+          "metadata": {}
+        }
+      ],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [
+        {
+          "description": "",
+          "name": "",
+          "range": {
+            "file": "tsante-step.html",
+            "start": {
+              "line": 95,
+              "column": 8
+            },
+            "end": {
+              "line": 95,
+              "column": 21
+            }
+          }
+        }
+      ],
+      "tagname": "tsante-step"
+    },
+    {
+      "description": "`<tsante-stepper>` is a material design stepper`.",
+      "summary": "",
+      "path": "tsante-stepper.html",
+      "properties": [
+        {
+          "name": "selectedIndex",
+          "type": "number",
+          "description": "The currently selected step",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 35,
+              "column": 10
+            },
+            "end": {
+              "line": 39,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_selectedChanged\""
+            }
+          },
+          "defaultValue": "-1"
+        },
+        {
+          "name": "clickable",
+          "type": "Object",
+          "description": "Defines if the steps are clickable or not.\nIf `clickable` is set to `true`, the selection of a step can be done by clicking it\nIf `clickable` is set to `false`, only the functions `next` and `previous` or the modification of `selectedIndex` will be able to change the selected step",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 46,
+              "column": 10
+            },
+            "end": {
+              "line": 50,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "false"
+        }
+      ],
+      "methods": [
+        {
+          "name": "ready",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 53,
+              "column": 6
+            },
+            "end": {
+              "line": 56,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "getSteps",
+          "description": "Gets the slotted `tsante-step` elements",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 61,
+              "column": 6
+            },
+            "end": {
+              "line": 65,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "Array.<HTMLElements>",
+            "desc": "The array of tsante-step elements"
+          }
+        },
+        {
+          "name": "setStates",
+          "description": "Updates the state of the steps",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 70,
+              "column": 6
+            },
+            "end": {
+              "line": 72,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "current",
+              "type": "number",
+              "description": "The currently selected index"
+            }
+          ]
+        },
+        {
+          "name": "_onStepClicked",
+          "description": "If the clickable attribute is set to true, the function sets the new selectedIndex",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 77,
+              "column": 6
+            },
+            "end": {
+              "line": 83,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "evt",
+              "type": "CustomEvent",
+              "description": "The custom event"
+            }
+          ]
+        },
+        {
+          "name": "_selectedChanged",
+          "description": "Checks that the next value of selectedIndex is correct.\nIt has to be more than 0, and less than the number of steps.\nIt it is correct, the states of the steps are updated.\nIt it is not correct, the value is reset to 0.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 92,
+              "column": 6
+            },
+            "end": {
+              "line": 99,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "next",
+              "type": "number",
+              "description": "The next value of selectedIndex"
+            },
+            {
+              "name": "previous",
+              "type": "number",
+              "description": "The previous value of selectedIndex"
+            }
+          ]
+        },
+        {
+          "name": "next",
+          "description": "Increases the selectedIndex",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 103,
+              "column": 6
+            },
+            "end": {
+              "line": 105,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "previous",
+          "description": "Decreases the selectedIndex",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 109,
+              "column": 6
+            },
+            "end": {
+              "line": 111,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": []
+        }
+      ],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "/components/tsante-stepper/demo/stepper-clickable.html",
+          "description": "clickable stepper"
+        },
+        {
+          "url": "/components/tsante-stepper/demo/stepper-not-clickable.html",
+          "description": "unclickable stepper"
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 25,
+          "column": 4
+        },
+        "end": {
+          "line": 112,
+          "column": 5
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "TsanteStepper",
+      "attributes": [
+        {
+          "name": "selected-index",
+          "description": "The currently selected step",
+          "sourceRange": {
+            "start": {
+              "line": 35,
+              "column": 10
+            },
+            "end": {
+              "line": 39,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "number"
+        },
+        {
+          "name": "clickable",
+          "description": "Defines if the steps are clickable or not.\nIf `clickable` is set to `true`, the selection of a step can be done by clicking it\nIf `clickable` is set to `false`, only the functions `next` and `previous` or the modification of `selectedIndex` will be able to change the selected step",
+          "sourceRange": {
+            "start": {
+              "line": 46,
+              "column": 10
+            },
+            "end": {
+              "line": 50,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "Object"
+        }
+      ],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [
+        {
+          "description": "",
+          "name": "",
+          "range": {
+            "file": "tsante-stepper.html",
+            "start": {
+              "line": 12,
+              "column": 4
+            },
+            "end": {
+              "line": 12,
+              "column": 17
+            }
+          }
+        }
+      ],
+      "tagname": "tsante-stepper"
+    }
+  ]
+}

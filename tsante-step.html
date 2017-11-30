@@ -1,0 +1,203 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../paper-button/paper-button.html">
+
+<dom-module id="tsante-step">
+
+  <template>
+    <style>
+      :host {
+        --tsante-step-connector-color-default: #DBDBDB;
+        --tsante-step-done-label-background-default: #555;
+        --tsante-step-done-label-color-default: #ddd;
+        --tsante-step-current-label-background-default: #555;
+        --tsante-step-current-label-color-default: #ddd;
+        --tsante-step-following-label-background-default: #ddd;
+        --tsante-step-following-label-color-default: #555;
+      }
+      paper-button {
+        width:100%;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0px 10px 0px 10px; 
+        margin: 0;
+      }
+      paper-button:hover {
+        background: rgba(0,0,0,0.04);
+      }
+      
+      .container {
+        display: flex;
+        align-items: center;
+      }
+      
+      .circle {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        margin-right: 15px;
+        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        font-size: 24px;
+      }
+      
+      :host([state="done"]) {
+        @apply --tsante-step-done-content-style;
+      }
+      :host([state="current"]) {
+        font-weight: bold;
+        @apply --tsante-step-current-content-style;
+      }
+      :host([state="following"]) {
+        @apply --tsante-step-following-content-style;
+      }
+      
+      :host([state="done"]) .circle {
+        background: var(--tsante-step-done-label-background, var(--tsante-step-done-label-background-default));
+        color: var(--tsante-step-done-label-color, var(--tsante-step-done-label-color-default));
+      }
+      :host([state="current"]) .circle {
+        background: var(--tsante-step-current-label-background, var(--tsante-step-current-label-background-default));
+        color: var(--tsante-step-current-label-color, var(--tsante-step-current-label-color-default));
+      }
+      :host([state="following"]) .circle {
+        background: var(--tsante-step-following-label-background, var(--tsante-step-following-label-background-default));
+        color: var(--tsante-step-following-label-color, var(--tsante-step-following-label-color-default));
+      }
+      
+      :host(:first-child) div.connector#before, :host(:last-child) div.connector#after {
+        visibility: hidden;
+      }
+      
+      div.connector#before {
+        margin-bottom: 5px;
+      }
+      div.connector#after {
+        margin-top: 5px;
+      }
+      
+      div.connector {
+        margin-left: 21px;
+        height:10px;
+        width: 1px;
+        background: var(--tsante-step-connector-color, var(--tsante-step-connector-color-default));
+      }
+    </style>
+    
+    <paper-button on-click="select">
+      <div id="before" class="connector"></div>
+      <div class="container">
+        <div class="circle">
+          <template is="dom-if" if="{{equals(state, 'done')}}">✓</template>
+          <template is="dom-if" if="{{!equals(state, 'done')}}">{{label}}</template>
+        </div>
+        <slot></slot>
+      </div>
+      <div id="after" class="connector"></div>
+    </paper-button>
+    
+  </template>
+--tsante-step-done-label-background
+  <script>
+  /**
+   * `<tsante-step>` is a step contained in a `<tsante-stepper>`.
+   * It is composed of two parts:
+   *  * The label of the step displayed in a circle. When the state of the element is set as `done`, the circle displays a checkmark instead of the label
+   *  * The text of the step
+   *
+   * ### Styling
+   * The `<tsante-step>` element provides the following custom properties and mixins for styling:
+   * 
+   * Custom property                          | Description                                             | Default
+   * -----------------------------------------|---------------------------------------------------------|--------
+   * --tsante-stop-connector-color            | The color of the connector between two steps            | #DBDBDB
+   * --tsante-step-done-label-background      | The background color of the label of a `done` step      | #555
+   * --tsante-step-done-label-color           | The color of the label of a `done` step                 | #DDD
+   * --tsante-step-current-label-background   | The background color of the label of the `current` step | #555
+   * --tsante-step-current-label-color        | The color of the label of the `current` step            | #DDD
+   * --tsante-step-following-label-background | The background color of the label of a `following` step | #DDD
+   * --tsante-step-following-label-color      | The color of the label of a `following` step            | #555
+   * 
+   * @customElement
+   * @polymer
+   * @extends {Polymer.Element}
+   * @demo /components/tsante-stepper/demo/step-done.html Step done
+   * @demo /components/tsante-stepper/demo/step-current.html Current step
+   * @demo /components/tsante-stepper/demo/step-following.html Following step 
+   * @demo /components/tsante-stepper/demo/stepper-custom-mixins.html custom mixins stepper
+   */
+    class TsanteStep extends Polymer.Element {
+      static get is() {
+        return 'tsante-step';
+      }
+      static get properties() {
+        return {
+          /**
+           * The text contained in the circle of the step.
+           * Should be short, like 1 or 2 characters.
+           */
+          label: {
+            type: String,
+            value: ''
+          },
+          /**
+           * The state of the step.
+           * 3 possible values : 
+           *  * `done` for the finished steps
+           *  * `current` for the current step
+           *  * `following` for the next steps
+           * @type {Object}
+           */
+          state: {
+            type: String,
+            value: 'following',
+            reflectToAttribute: true
+          }
+        }
+      }
+      
+      /**
+       * Updates the state of the step depending on the current step of the stepper and the index of the step.
+       * @param  {number} selfIndex The index of the step
+       * @param  {number} current   The current step of the stepper
+       */
+      updateState(selfIndex, current) {
+        if(selfIndex < current) {
+          this.state = 'done'
+        } else if(selfIndex === current) {
+          this.state = 'current'
+        } else if(selfIndex > current) {
+          this.state = 'following'
+        }
+      }
+      /**
+       * Checks if the 2 parameters have the same value
+       * @param  a First value
+       * @param  b Second value
+       * @return {boolean} True is the two values are the same, false otherwise
+       */
+      equals(a, b) {
+        return a === b
+      }
+      /**
+       * Dispatches a custom tsante-step-click, when the step is clicked
+       */
+      select() {
+        const evt = new CustomEvent('tsante-step-click', { detail: this, bubbles: true, composed: true })
+        this.dispatchEvent(evt)
+      }
+      
+      /**
+      * Fired when the step is clicked
+      *
+      * @event tsante-step-click
+      * @param {HTMLElement} step The clicked step
+      */
+      
+    }
+    customElements.define(TsanteStep.is, TsanteStep);
+  </script>
+
+</dom-module>
