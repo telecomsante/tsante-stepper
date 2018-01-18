@@ -1,6 +1,6 @@
 # Changelog tsante-stepper
 
-## Upcoming changes
+## Version 1.0.1 (18-01-2018)
 * [FIX] [BGO] Default text-transform: none for tsante-step content (Gitlab#1)
 
 ## Version 1.0.0 (30-11-2017)
