@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0.1",
+  "schema_version": "1.0.0",
   "elements": [
     {
       "description": "`<tsante-step>` is a step contained in a `<tsante-stepper>`.\nIt is composed of two parts:\n * The label of the step displayed in a circle. When the state of the element is set as `done`, the circle displays a checkmark instead of the label\n * The text of the step\n\n### Styling\nThe `<tsante-step>` element provides the following custom properties and mixins for styling:\n\nCustom property                          | Description                                             | Default\n-----------------------------------------|---------------------------------------------------------|--------\n--tsante-stop-connector-color            | The color of the connector between two steps            | #DBDBDB\n--tsante-step-done-label-background      | The background color of the label of a `done` step      | #555\n--tsante-step-done-label-color           | The color of the label of a `done` step                 | #DDD\n--tsante-step-current-label-background   | The background color of the label of the `current` step | #555\n--tsante-step-current-label-color        | The color of the label of the `current` step            | #DDD\n--tsante-step-following-label-background | The background color of the label of a `following` step | #DDD\n--tsante-step-following-label-color      | The color of the label of a `following` step            | #555",
@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 140,
+              "line": 162,
               "column": 10
             },
             "end": {
-              "line": 143,
+              "line": 165,
               "column": 11
             }
           },
@@ -33,11 +33,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 152,
+              "line": 174,
               "column": 10
             },
             "end": {
-              "line": 156,
+              "line": 178,
               "column": 11
             }
           },
@@ -54,11 +54,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 165,
+              "line": 187,
               "column": 6
             },
             "end": {
-              "line": 173,
+              "line": 195,
               "column": 7
             }
           },
@@ -77,46 +77,16 @@
           ]
         },
         {
-          "name": "equals",
-          "description": "Checks if the 2 parameters have the same value",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 180,
-              "column": 6
-            },
-            "end": {
-              "line": 182,
-              "column": 7
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "a",
-              "description": "First value"
-            },
-            {
-              "name": "b",
-              "description": "Second value"
-            }
-          ],
-          "return": {
-            "type": "boolean",
-            "desc": "True is the two values are the same, false otherwise"
-          }
-        },
-        {
           "name": "select",
           "description": "Dispatches a custom tsante-step-click, when the step is clicked",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 186,
+              "line": 199,
               "column": 6
             },
             "end": {
-              "line": 189,
+              "line": 202,
               "column": 7
             }
           },
@@ -135,22 +105,30 @@
           "description": "Current step"
         },
         {
+          "url": "/components/tsante-stepper/demo/step-diameter.html",
+          "description": "Different diameter steps"
+        },
+        {
           "url": "/components/tsante-stepper/demo/step-following.html",
           "description": "Following step"
         },
         {
           "url": "/components/tsante-stepper/demo/stepper-custom-mixins.html",
           "description": "custom mixins stepper"
+        },
+        {
+          "url": "/components/tsante-stepper/demo/stepper-long-names.html",
+          "description": "long names"
         }
       ],
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 130,
+          "line": 152,
           "column": 4
         },
         "end": {
-          "line": 198,
+          "line": 211,
           "column": 5
         }
       },
@@ -163,11 +141,11 @@
           "description": "The text contained in the circle of the step.\nShould be short, like 1 or 2 characters.",
           "sourceRange": {
             "start": {
-              "line": 140,
+              "line": 162,
               "column": 10
             },
             "end": {
-              "line": 143,
+              "line": 165,
               "column": 11
             }
           },
@@ -179,11 +157,11 @@
           "description": "The state of the step.\n3 possible values : \n * `done` for the finished steps\n * `current` for the current step\n * `following` for the next steps",
           "sourceRange": {
             "start": {
-              "line": 152,
+              "line": 174,
               "column": 10
             },
             "end": {
-              "line": 156,
+              "line": 178,
               "column": 11
             }
           },
@@ -210,11 +188,11 @@
           "range": {
             "file": "tsante-step.html",
             "start": {
-              "line": 95,
+              "line": 115,
               "column": 8
             },
             "end": {
-              "line": 95,
+              "line": 115,
               "column": 21
             }
           }

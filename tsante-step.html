@@ -6,6 +6,7 @@
   <template>
     <style>
       :host {
+        --tsante-step-diameter-default: 44px;
         --tsante-step-connector-color-default: #DBDBDB;
         --tsante-step-done-label-background-default: #555;
         --tsante-step-done-label-color-default: #ddd;
@@ -31,17 +32,20 @@
         align-items: center;
       }
       
-      .circle {
-        width: 44px;
-        height: 44px;
-        border-radius: 50%;
+      svg {
+        height: var(--tsante-step-diameter, var(--tsante-step-diameter-default));
+        min-height: var(--tsante-step-diameter, var(--tsante-step-diameter-default));
+        width: var(--tsante-step-diameter, var(--tsante-step-diameter-default));
+        min-width: var(--tsante-step-diameter, var(--tsante-step-diameter-default));
         margin-right: 15px;
-        
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        
-        font-size: 24px;
+      }
+      
+      svg > circle {
+        r: 50%;
+      }
+      
+      svg > text {
+        font-size: 24;
       }
       
       :host([state="done"]) {
@@ -55,17 +59,31 @@
         @apply --tsante-step-following-content-style;
       }
       
-      :host([state="done"]) .circle {
-        background: var(--tsante-step-done-label-background, var(--tsante-step-done-label-background-default));
-        color: var(--tsante-step-done-label-color, var(--tsante-step-done-label-color-default));
+      :host([state="done"]) circle {
+        fill: var(--tsante-step-done-label-background, var(--tsante-step-done-label-background-default));
       }
-      :host([state="current"]) .circle {
-        background: var(--tsante-step-current-label-background, var(--tsante-step-current-label-background-default));
-        color: var(--tsante-step-current-label-color, var(--tsante-step-current-label-color-default));
+      :host([state="done"]) #label {
+        display: none;
       }
-      :host([state="following"]) .circle {
-        background: var(--tsante-step-following-label-background, var(--tsante-step-following-label-background-default));
-        color: var(--tsante-step-following-label-color, var(--tsante-step-following-label-color-default));
+      :host([state="done"]) #checkmark {
+        fill: var(--tsante-step-done-label-color, var(--tsante-step-done-label-color-default)); 
+      }
+      
+      :host([state="current"]) circle {
+        fill: var(--tsante-step-current-label-background, var(--tsante-step-current-label-background-default));
+      }
+      :host([state="current"]) #label {
+        fill: var(--tsante-step-current-label-color, var(--tsante-step-current-label-color-default));
+      }
+      :host([state="current"]) #checkmark, :host([state="following"]) #checkmark {
+        display: none;
+      }
+      
+      :host([state="following"]) circle {
+        fill: var(--tsante-step-following-label-background, var(--tsante-step-following-label-background-default));
+      }
+      :host([state="following"]) #label {
+        fill: var(--tsante-step-following-label-color, var(--tsante-step-following-label-color-default));
       }
       
       :host(:first-child) div.connector#before, :host(:last-child) div.connector#after {
@@ -80,7 +98,7 @@
       }
       
       div.connector {
-        margin-left: 21px;
+        margin-left: calc(var(--tsante-step-diameter, var(--tsante-step-diameter-default)) / 2);
         height:10px;
         width: 1px;
         background: var(--tsante-step-connector-color, var(--tsante-step-connector-color-default));
@@ -90,10 +108,11 @@
     <paper-button on-click="select">
       <div id="before" class="connector"></div>
       <div class="container">
-        <div class="circle">
-          <template is="dom-if" if="{{equals(state, 'done')}}">✓</template>
-          <template is="dom-if" if="{{!equals(state, 'done')}}">{{label}}</template>
-        </div>
+        <svg viewBox="0 0 104 104">
+          <circle cx="50%" cy="50%"/>
+          <text id="label" x="50%" y="50%" font-size="24" text-anchor="middle" alignment-baseline="middle">{{label}}</text>
+          <path id="checkmark" d="M46 60 l21 -20.2 2.8 2.8-24 24-11-11 2.7-2.8z"></path>
+        </svg>
         <slot></slot>
       </div>
       <div id="after" class="connector"></div>
@@ -126,8 +145,10 @@
    * @extends {Polymer.Element}
    * @demo /components/tsante-stepper/demo/step-done.html Step done
    * @demo /components/tsante-stepper/demo/step-current.html Current step
+   * @demo /components/tsante-stepper/demo/step-diameter.html Different diameter steps
    * @demo /components/tsante-stepper/demo/step-following.html Following step 
    * @demo /components/tsante-stepper/demo/stepper-custom-mixins.html custom mixins stepper
+   * @demo /components/tsante-stepper/demo/stepper-long-names.html long names
    */
     class TsanteStep extends Polymer.Element {
       static get is() {
@@ -172,15 +193,6 @@
         } else if(selfIndex > current) {
           this.state = 'following'
         }
-      }
-      /**
-       * Checks if the 2 parameters have the same value
-       * @param  a First value
-       * @param  b Second value
-       * @return {boolean} True is the two values are the same, false otherwise
-       */
-      equals(a, b) {
-        return a === b
       }
       /**
        * Dispatches a custom tsante-step-click, when the step is clicked
