@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 142,
+              "line": 162,
               "column": 10
             },
             "end": {
-              "line": 145,
+              "line": 165,
               "column": 11
             }
           },
@@ -33,11 +33,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 154,
+              "line": 174,
               "column": 10
             },
             "end": {
-              "line": 158,
+              "line": 178,
               "column": 11
             }
           },
@@ -54,11 +54,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 167,
+              "line": 187,
               "column": 6
             },
             "end": {
-              "line": 175,
+              "line": 195,
               "column": 7
             }
           },
@@ -77,46 +77,16 @@
           ]
         },
         {
-          "name": "equals",
-          "description": "Checks if the 2 parameters have the same value",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 182,
-              "column": 6
-            },
-            "end": {
-              "line": 184,
-              "column": 7
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "a",
-              "description": "First value"
-            },
-            {
-              "name": "b",
-              "description": "Second value"
-            }
-          ],
-          "return": {
-            "type": "boolean",
-            "desc": "True is the two values are the same, false otherwise"
-          }
-        },
-        {
           "name": "select",
           "description": "Dispatches a custom tsante-step-click, when the step is clicked",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 188,
+              "line": 199,
               "column": 6
             },
             "end": {
-              "line": 191,
+              "line": 202,
               "column": 7
             }
           },
@@ -135,6 +105,10 @@
           "description": "Current step"
         },
         {
+          "url": "/components/tsante-stepper/demo/step-diameter.html",
+          "description": "Different diameter steps"
+        },
+        {
           "url": "/components/tsante-stepper/demo/step-following.html",
           "description": "Following step"
         },
@@ -150,11 +124,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 132,
+          "line": 152,
           "column": 4
         },
         "end": {
-          "line": 200,
+          "line": 211,
           "column": 5
         }
       },
@@ -167,11 +141,11 @@
           "description": "The text contained in the circle of the step.\nShould be short, like 1 or 2 characters.",
           "sourceRange": {
             "start": {
-              "line": 142,
+              "line": 162,
               "column": 10
             },
             "end": {
-              "line": 145,
+              "line": 165,
               "column": 11
             }
           },
@@ -183,11 +157,11 @@
           "description": "The state of the step.\n3 possible values : \n * `done` for the finished steps\n * `current` for the current step\n * `following` for the next steps",
           "sourceRange": {
             "start": {
-              "line": 154,
+              "line": 174,
               "column": 10
             },
             "end": {
-              "line": 158,
+              "line": 178,
               "column": 11
             }
           },
@@ -214,11 +188,11 @@
           "range": {
             "file": "tsante-step.html",
             "start": {
-              "line": 96,
+              "line": 115,
               "column": 8
             },
             "end": {
-              "line": 96,
+              "line": 115,
               "column": 21
             }
           }
