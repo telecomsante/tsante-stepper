@@ -6,6 +6,7 @@
   <template>
     <style>
       :host {
+        --tsante-step-diameter-default: 44px;
         --tsante-step-connector-color-default: #DBDBDB;
         --tsante-step-done-label-background-default: #555;
         --tsante-step-done-label-color-default: #ddd;
@@ -32,15 +33,15 @@
       }
       
       svg {
-        height: 44px;
-        min-height: 44px;
-        width: 44px;
-        min-width: 44px;
+        height: var(--tsante-step-diameter, var(--tsante-step-diameter-default));
+        min-height: var(--tsante-step-diameter, var(--tsante-step-diameter-default));
+        width: var(--tsante-step-diameter, var(--tsante-step-diameter-default));
+        min-width: var(--tsante-step-diameter, var(--tsante-step-diameter-default));
         margin-right: 15px;
       }
       
       svg > circle {
-        r: 22px;
+        r: 50%;
       }
       
       svg > text {
@@ -97,7 +98,7 @@
       }
       
       div.connector {
-        margin-left: 22px;
+        margin-left: calc(var(--tsante-step-diameter, var(--tsante-step-diameter-default))/2);
         height:10px;
         width: 1px;
         background: var(--tsante-step-connector-color, var(--tsante-step-connector-color-default));
