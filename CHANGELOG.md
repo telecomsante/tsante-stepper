@@ -1,6 +1,8 @@
 # Changelog tsante-stepper
 
 ## Current version
+
+## Version 1.0.2 (09-04-2018)
 [FIX] [BGO] SVG for step instead of html & css
 
 ## Version 1.0.1 (18-01-2018)
