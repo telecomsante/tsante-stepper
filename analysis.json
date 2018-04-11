@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 162,
+              "line": 163,
               "column": 10
             },
             "end": {
-              "line": 165,
+              "line": 166,
               "column": 11
             }
           },
@@ -33,11 +33,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 174,
+              "line": 175,
               "column": 10
             },
             "end": {
-              "line": 178,
+              "line": 179,
               "column": 11
             }
           },
@@ -54,11 +54,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 187,
+              "line": 188,
               "column": 6
             },
             "end": {
-              "line": 195,
+              "line": 196,
               "column": 7
             }
           },
@@ -82,11 +82,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 199,
+              "line": 200,
               "column": 6
             },
             "end": {
-              "line": 202,
+              "line": 203,
               "column": 7
             }
           },
@@ -124,11 +124,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 152,
+          "line": 153,
           "column": 4
         },
         "end": {
-          "line": 211,
+          "line": 212,
           "column": 5
         }
       },
@@ -141,11 +141,11 @@
           "description": "The text contained in the circle of the step.\nShould be short, like 1 or 2 characters.",
           "sourceRange": {
             "start": {
-              "line": 162,
+              "line": 163,
               "column": 10
             },
             "end": {
-              "line": 165,
+              "line": 166,
               "column": 11
             }
           },
@@ -157,11 +157,11 @@
           "description": "The state of the step.\n3 possible values : \n * `done` for the finished steps\n * `current` for the current step\n * `following` for the next steps",
           "sourceRange": {
             "start": {
-              "line": 174,
+              "line": 175,
               "column": 10
             },
             "end": {
-              "line": 178,
+              "line": 179,
               "column": 11
             }
           },
@@ -188,11 +188,11 @@
           "range": {
             "file": "tsante-step.html",
             "start": {
-              "line": 115,
+              "line": 116,
               "column": 8
             },
             "end": {
-              "line": 115,
+              "line": 116,
               "column": 21
             }
           }
