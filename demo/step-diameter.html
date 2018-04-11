@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="../../polymer/polymer.html">
+    <link rel="import" href="../tsante-step.html">
+  </head>
+  <body>
+    <style>
+      :host {
+        font-family: sans-serif;
+      }
+      tsante-step {
+        --tsante-step-diameter: 60px;
+        --tsante-step-connector-color: black;
+        /* Done steps colors */
+        --tsante-step-done-label-background: #4286f4;
+        --tsante-step-done-label-color: #f48c41;
+        /* Current step colors */
+        --tsante-step-current-label-background: #4286f4;
+        --tsante-step-current-label-color: #f48c41;
+        /* Following steps colors */
+        --tsante-step-following-label-background: #f48c41;
+        --tsante-step-following-label-color: #4286f4;
+      }
+    </style>
+      <tsante-step label="1" state="done">Done</tsante-step>
+    
+  </body>
+</html>
