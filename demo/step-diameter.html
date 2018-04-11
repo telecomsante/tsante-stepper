@@ -4,6 +4,7 @@
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
     <link rel="import" href="../../polymer/polymer.html">
     <link rel="import" href="../tsante-step.html">
+    <link rel="import" href="../tsante-stepper.html">
   </head>
   <body>
     <style>
@@ -24,7 +25,13 @@
         --tsante-step-following-label-color: #4286f4;
       }
     </style>
-      <tsante-step label="1" state="done">Done</tsante-step>
+      <tsante-stepper id="stepper" clickable selected-index=2>
+        <tsante-step label="1">Bonsoir</tsante-step>
+        <tsante-step label="2">Hello</tsante-step>
+        <tsante-step label="3">Ola</tsante-step>
+        <tsante-step label="4">Gutentag</tsante-step>
+        <tsante-step label="5">Moikka</tsante-step>
+      </tsante-stepper>
     
   </body>
 </html>
