@@ -1,6 +1,8 @@
 # Changelog tsante-stepper
 
 ## Current version
+
+## Version 1.0.3 (11-04-2018)
 [FIX] [BGO] Automatic font-size of steps
 
 ## Version 1.0.2 (09-04-2018)
